@@ -1,0 +1,56 @@
+// Sample catalog used by the seed script. Prices are in USD.
+export const catalog = [
+  // Produce
+  { name: 'Bananas', category: 'Produce', unit: 'kg', price: 1.29, tags: ['fruit', 'breakfast', 'healthy', 'vegan', 'snack'] },
+  { name: 'Apples', category: 'Produce', unit: 'kg', price: 2.49, tags: ['fruit', 'healthy', 'vegan', 'snack'] },
+  { name: 'Avocados', category: 'Produce', unit: 'each', price: 1.15, tags: ['healthy', 'vegan', 'taco', 'breakfast'] },
+  { name: 'Tomatoes', category: 'Produce', unit: 'kg', price: 2.2, tags: ['vegetable', 'salad', 'pasta', 'taco', 'vegan'] },
+  { name: 'Lettuce', category: 'Produce', unit: 'each', price: 1.4, tags: ['vegetable', 'salad', 'taco', 'vegan', 'healthy'] },
+  { name: 'Onions', category: 'Produce', unit: 'kg', price: 1.1, tags: ['vegetable', 'cooking', 'taco', 'vegan'] },
+  { name: 'Garlic', category: 'Produce', unit: 'each', price: 0.6, tags: ['cooking', 'pasta', 'vegan'] },
+  { name: 'Spinach', category: 'Produce', unit: 'bag', price: 2.8, tags: ['vegetable', 'salad', 'healthy', 'vegan'] },
+  { name: 'Lemons', category: 'Produce', unit: 'kg', price: 2.1, tags: ['fruit', 'cooking', 'drink', 'vegan'] },
+  { name: 'Potatoes', category: 'Produce', unit: 'kg', price: 1.0, tags: ['vegetable', 'cooking', 'bbq', 'vegan'] },
+  // Dairy & eggs
+  { name: 'Whole Milk', category: 'Dairy', unit: 'liter', price: 1.35, tags: ['breakfast', 'coffee', 'baking'] },
+  { name: 'Oat Milk', category: 'Dairy', unit: 'liter', price: 2.6, tags: ['breakfast', 'vegan', 'coffee', 'healthy'] },
+  { name: 'Greek Yogurt', category: 'Dairy', unit: 'tub', price: 3.2, tags: ['breakfast', 'healthy', 'protein', 'snack'] },
+  { name: 'Cheddar Cheese', category: 'Dairy', unit: 'pack', price: 4.1, tags: ['taco', 'sandwich', 'snack'] },
+  { name: 'Mozzarella', category: 'Dairy', unit: 'pack', price: 3.5, tags: ['pizza', 'pasta', 'salad'] },
+  { name: 'Butter', category: 'Dairy', unit: 'pack', price: 2.9, tags: ['baking', 'breakfast', 'cooking'] },
+  { name: 'Eggs', category: 'Dairy', unit: 'dozen', price: 3.4, tags: ['breakfast', 'baking', 'protein'] },
+  // Bakery
+  { name: 'Whole Wheat Bread', category: 'Bakery', unit: 'loaf', price: 2.75, tags: ['breakfast', 'sandwich', 'healthy', 'vegan'] },
+  { name: 'Tortillas', category: 'Bakery', unit: 'pack', price: 2.3, tags: ['taco', 'wrap', 'vegan'] },
+  { name: 'Burger Buns', category: 'Bakery', unit: 'pack', price: 2.5, tags: ['bbq', 'burger', 'party'] },
+  { name: 'Croissants', category: 'Bakery', unit: 'pack', price: 4.0, tags: ['breakfast', 'snack'] },
+  // Meat & protein
+  { name: 'Chicken Breast', category: 'Meat', unit: 'kg', price: 8.9, tags: ['protein', 'healthy', 'cooking', 'bbq', 'taco'] },
+  { name: 'Ground Beef', category: 'Meat', unit: 'kg', price: 9.5, tags: ['taco', 'burger', 'bbq', 'pasta', 'protein'] },
+  { name: 'Salmon Fillet', category: 'Meat', unit: 'kg', price: 18.0, tags: ['protein', 'healthy', 'dinner'] },
+  { name: 'Tofu', category: 'Meat', unit: 'block', price: 2.4, tags: ['protein', 'vegan', 'healthy'] },
+  { name: 'Chickpeas', category: 'Pantry', unit: 'can', price: 1.1, tags: ['protein', 'vegan', 'healthy', 'salad'] },
+  // Pantry
+  { name: 'Spaghetti', category: 'Pantry', unit: 'pack', price: 1.6, tags: ['pasta', 'dinner', 'vegan'] },
+  { name: 'Tomato Sauce', category: 'Pantry', unit: 'jar', price: 2.2, tags: ['pasta', 'pizza', 'vegan'] },
+  { name: 'Olive Oil', category: 'Pantry', unit: 'bottle', price: 7.5, tags: ['cooking', 'salad', 'vegan'] },
+  { name: 'Rice', category: 'Pantry', unit: 'kg', price: 2.0, tags: ['dinner', 'vegan', 'cooking'] },
+  { name: 'Rolled Oats', category: 'Pantry', unit: 'pack', price: 3.0, tags: ['breakfast', 'healthy', 'vegan'] },
+  { name: 'Peanut Butter', category: 'Pantry', unit: 'jar', price: 3.8, tags: ['breakfast', 'snack', 'protein', 'vegan'] },
+  { name: 'Honey', category: 'Pantry', unit: 'jar', price: 5.2, tags: ['breakfast', 'baking'] },
+  { name: 'Flour', category: 'Pantry', unit: 'kg', price: 1.5, tags: ['baking', 'pizza'] },
+  { name: 'Salsa', category: 'Pantry', unit: 'jar', price: 3.1, tags: ['taco', 'snack', 'party', 'vegan'] },
+  // Snacks & drinks
+  { name: 'Tortilla Chips', category: 'Snacks', unit: 'bag', price: 2.9, tags: ['snack', 'party', 'taco', 'vegan'] },
+  { name: 'Mixed Nuts', category: 'Snacks', unit: 'bag', price: 6.5, tags: ['snack', 'healthy', 'protein', 'vegan'] },
+  { name: 'Dark Chocolate', category: 'Snacks', unit: 'bar', price: 2.4, tags: ['snack', 'dessert', 'vegan'] },
+  { name: 'Granola Bars', category: 'Snacks', unit: 'box', price: 4.3, tags: ['snack', 'breakfast', 'healthy'] },
+  { name: 'Ground Coffee', category: 'Beverages', unit: 'bag', price: 8.0, tags: ['coffee', 'breakfast', 'drink'] },
+  { name: 'Orange Juice', category: 'Beverages', unit: 'liter', price: 3.3, tags: ['breakfast', 'drink', 'vegan'] },
+  { name: 'Sparkling Water', category: 'Beverages', unit: '6-pack', price: 3.9, tags: ['drink', 'party', 'vegan'] },
+  { name: 'Green Tea', category: 'Beverages', unit: 'box', price: 3.6, tags: ['drink', 'healthy', 'vegan'] },
+  // Household
+  { name: 'Dish Soap', category: 'Household', unit: 'bottle', price: 2.7, tags: ['cleaning', 'kitchen'] },
+  { name: 'Paper Towels', category: 'Household', unit: 'pack', price: 5.5, tags: ['cleaning', 'kitchen', 'party'] },
+  { name: 'Trash Bags', category: 'Household', unit: 'box', price: 6.0, tags: ['cleaning', 'kitchen'] },
+];

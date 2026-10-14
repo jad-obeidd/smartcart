@@ -1,0 +1,52 @@
+body {
+  background: #f6f7fb;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.card {
+  border: 0;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.08);
+}
+
+.price-up {
+  color: #c0392b;
+}
+
+.price-down {
+  color: #1e8449;
+}
+
+.flash {
+  animation: flash 1.2s ease-out;
+}
+
+@keyframes flash {
+  from {
+    background: #fff3cd;
+  }
+  to {
+    background: transparent;
+  }
+}
+
+.list-item-checked {
+  text-decoration: line-through;
+  color: #98a2b3;
+}
+
+.live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+  background: #98a2b3;
+}
+
+.live-dot.on {
+  background: #22c55e;
+}
