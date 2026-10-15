@@ -62,6 +62,12 @@ npm test
 
 The tests start an in-memory MongoDB and cover auth, natural-language search (with and without a mocked OpenAI client), list generation, item updates, ownership checks, recommendations and the price tracker.
 
+On first run, `mongodb-memory-server` downloads a MongoDB binary (~600 MB). On a slow connection you can point it at an existing `mongod` instead:
+
+```bash
+MONGOMS_SYSTEM_BINARY=/path/to/mongod npm test
+```
+
 ## API overview
 
 | Method | Endpoint | Description |
