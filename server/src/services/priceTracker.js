@@ -1,5 +1,6 @@
 import { EventEmitter } from 'node:events';
 import Product from '../models/Product.js';
+import { nextPrice } from './pricing.js';
 
 // Simulates a live price feed. A real deployment would replace `nextPrice` with
 // calls to store APIs or scrapers; everything downstream (history, SSE stream,
@@ -8,15 +9,7 @@ import Product from '../models/Product.js';
 export const priceEvents = new EventEmitter();
 priceEvents.setMaxListeners(0);
 
-const MAX_STEP = 0.08; // max +/-8% per tick
-const BAND = 0.3; // stay within +/-30% of the original price
-
-export function nextPrice(current, base, rand = Math.random) {
-  const change = (rand() * 2 - 1) * MAX_STEP;
-  const raw = current * (1 + change);
-  const clamped = Math.min(base * (1 + BAND), Math.max(base * (1 - BAND), raw));
-  return Math.max(0.01, Math.round(clamped * 100) / 100);
-}
+export { nextPrice };
 
 export async function tick({ sampleSize = 5, rand = Math.random } = {}) {
   const count = await Product.countDocuments();

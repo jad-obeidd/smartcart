@@ -1,5 +1,8 @@
 import OpenAI from 'openai';
-import { tokenize, scoreProduct } from './matcher.js';
+import { tokenize } from './matcher.js';
+import { parseSearchFallback, generateListFallback, recommendFallback } from './fallbacks.js';
+
+export { parseSearchFallback, generateListFallback, recommendFallback };
 
 // The OpenAI client is optional: without OPENAI_API_KEY every feature falls back to a
 // rule-based implementation, so the app still works for local development and tests.
@@ -31,28 +34,6 @@ async function askJSON(system, user) {
 // Natural-language search: "cheap vegan snacks under $5" -> structured filters
 // ---------------------------------------------------------------------------
 
-export function parseSearchFallback(query, categories) {
-  const text = String(query).toLowerCase();
-  const filters = { keywords: [], category: null, minPrice: null, maxPrice: null };
-
-  const max = text.match(/(?:under|below|less than|max|cheaper than|<)\s*\$?\s*(\d+(?:\.\d+)?)/);
-  if (max) filters.maxPrice = Number(max[1]);
-  const min = text.match(/(?:over|above|more than|min|>)\s*\$?\s*(\d+(?:\.\d+)?)/);
-  if (min) filters.minPrice = Number(min[1]);
-
-  const cleaned = text.replace(/(under|below|less than|max|cheaper than|over|above|more than|min)\s*\$?\s*\d+(\.\d+)?/g, ' ');
-  let tokens = tokenize(cleaned).filter((t) => !/^\d+$/.test(t));
-
-  const category = categories.find((c) => tokens.includes(tokenize(c)[0]));
-  if (category) {
-    filters.category = category;
-    const catToken = tokenize(category)[0];
-    tokens = tokens.filter((t) => t !== catToken);
-  }
-  filters.keywords = tokens;
-  return filters;
-}
-
 export async function parseSearchQuery(query, categories) {
   if (!client) return parseSearchFallback(query, categories);
   try {
@@ -77,19 +58,6 @@ export async function parseSearchQuery(query, categories) {
 // ---------------------------------------------------------------------------
 // Smart list generation: "taco night for 4" -> [{ name, quantity }]
 // ---------------------------------------------------------------------------
-
-export function generateListFallback(prompt, products, maxItems = 8) {
-  const tokens = tokenize(prompt);
-  const ranked = products
-    .map((p) => ({ p, s: scoreProduct(p, tokens) }))
-    .filter((r) => r.s > 0)
-    .sort((a, b) => b.s - a.s || a.p.price - b.p.price)
-    .slice(0, maxItems);
-  return {
-    title: prompt.length > 60 ? `${prompt.slice(0, 57)}...` : prompt,
-    items: ranked.map(({ p }) => ({ name: p.name, quantity: 1 })),
-  };
-}
 
 export async function generateList(prompt, products) {
   if (!client) return generateListFallback(prompt, products);
@@ -117,22 +85,6 @@ export async function generateList(prompt, products) {
 // ---------------------------------------------------------------------------
 // Personalized recommendations based on what the user already buys
 // ---------------------------------------------------------------------------
-
-export function recommendFallback(listItemNames, products, limit = 6) {
-  const owned = new Set(listItemNames.map((n) => n.toLowerCase()));
-  const tokens = listItemNames.flatMap(tokenize);
-  const categoryCounts = {};
-  for (const p of products) {
-    if (owned.has(p.name.toLowerCase())) categoryCounts[p.category] = (categoryCounts[p.category] || 0) + 1;
-  }
-  return products
-    .filter((p) => !owned.has(p.name.toLowerCase()))
-    .map((p) => ({ p, s: (categoryCounts[p.category] || 0) * 2 + scoreProduct(p, tokens) }))
-    .filter((r) => r.s > 0)
-    .sort((a, b) => b.s - a.s || a.p.price - b.p.price)
-    .slice(0, limit)
-    .map(({ p }) => ({ product: p, reason: `Popular with your ${p.category.toLowerCase()} picks` }));
-}
 
 export async function recommend(listItemNames, products, limit = 6) {
   if (!client || !listItemNames.length) return recommendFallback(listItemNames, products, limit);

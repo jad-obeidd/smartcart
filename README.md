@@ -4,6 +4,8 @@ SmartCart is a full-stack shopping assistant that turns a sentence like *"taco n
 
 **Stack:** React · Bootstrap · Node.js · Express · MongoDB (Mongoose) · OpenAI API · JWT authentication · Server-Sent Events
 
+**▶ Live demo:** [jad-obeidd.github.io/smartcart](https://jad-obeidd.github.io/smartcart/), a static build that runs the same routes and rule-based engine in your browser (no server, database or API key; data stays in your browser).
+
 ## Screenshots
 
 ![A shopping list generated from "taco night for 4", with prices, an estimated total and live price changes](docs/screenshots/list.png)
@@ -94,3 +96,13 @@ MONGOMS_SYSTEM_BINARY=/path/to/mongod npm test
 ## Author
 
 **Jad Obeid** — [LinkedIn](https://www.linkedin.com/in/jad-obeid-dev) · [GitHub](https://github.com/jad-obeidd)
+
+## Static demo build
+
+The live demo is the same React client built with `VITE_DEMO=true`. In that mode `src/api/client.js` answers every `/api` route in the browser (`src/demo/backend.js`) using the server's own rule-based search, list generation and recommendation code (`server/src/services/fallbacks.js`, `matcher.js`, `pricing.js`), stores data in `localStorage`, and simulates the live price feed.
+
+```bash
+cd client
+VITE_DEMO=true npx vite build --outDir dist-demo
+```
+

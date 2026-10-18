@@ -50,3 +50,12 @@ body {
 .live-dot.on {
   background: #22c55e;
 }
+
+.demo-banner {
+  background: #111827;
+  color: #e5e7eb;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 6px 12px;
+}
+.demo-banner a { color: #93c5fd; }
