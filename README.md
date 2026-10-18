@@ -4,6 +4,12 @@ SmartCart is a full-stack shopping assistant that turns a sentence like *"taco n
 
 **Stack:** React · Bootstrap · Node.js · Express · MongoDB (Mongoose) · OpenAI API · JWT authentication · Server-Sent Events
 
+## Screenshots
+
+![A shopping list generated from "taco night for 4", with prices, an estimated total and live price changes](docs/screenshots/list.png)
+
+![Natural-language search for "healthy snacks under $5" next to the live price feed](docs/screenshots/search.png)
+
 ## Features
 
 | Feature | How it works |
