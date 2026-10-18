@@ -9,7 +9,14 @@ export function setToken(token) {
   else localStorage.removeItem(TOKEN_KEY);
 }
 
+export const DEMO = import.meta.env.VITE_DEMO === 'true';
+
 export async function api(path, { method = 'GET', body } = {}) {
+  if (DEMO) {
+    // Static live demo: the same routes are answered in the browser (see src/demo/backend.js)
+    const { demoApi } = await import('../demo/backend.js');
+    return demoApi(path, { method, body }, getToken());
+  }
   const headers = { 'Content-Type': 'application/json' };
   const token = getToken();
   if (token) headers.Authorization = `Bearer ${token}`;

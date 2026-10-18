@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../api/AuthContext.jsx';
+import { DEMO } from '../api/client.js';
 
 export default function AuthPage({ mode }) {
   const isLogin = mode === 'login';
@@ -38,6 +39,9 @@ export default function AuthPage({ mode }) {
             {isLogin ? 'Log in to see your shopping lists.' : 'Generate smart shopping lists in seconds.'}
           </p>
           {error && <div className="alert alert-danger py-2">{error}</div>}
+          {DEMO && isLogin && (
+            <div className="alert alert-info py-2 small">Demo account: <strong>guest@smartcart.demo</strong> / <strong>demo</strong></div>
+          )}
           <form onSubmit={submit}>
             {!isLogin && (
               <div className="mb-3">
