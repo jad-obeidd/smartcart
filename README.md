@@ -1,4 +1,4 @@
-# 🛒 SmartCart — AI-Based Shopping Assistant
+# SmartCart: AI shopping assistant
 
 SmartCart is a full-stack shopping assistant that turns a sentence like *"taco night for 4"* into a priced shopping list, understands natural-language product searches like *"healthy snacks under $5"*, recommends products based on what you usually buy, and streams live price changes to the browser.
 
